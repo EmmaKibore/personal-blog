@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+    {{super()}}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <p style="font-size:30px; font-family: Lobster, cursive;">
+            <strong>The Imagination Needs MooDling-long, Inneficient happy idling, Dawdling and Puttering.</strong>
+        </p>
+        <br>
+        <br>
+    </div>
+    <div class="container">
+        <div class="row">
+            {% for pitch in pitches %}
+            <div class="card" style="width:350px; margin:10px;">
+                <div class="card-header">
+                    <small>{{pitch.title}}</small>
+                </div>
+                <div class="card-body">
+                    {{pitch.content}}
+                </div> 
+                <div class="card-footer">
+                    <a class="btn btn-outline-info btn-sm" href="/comment/new/{{pitch.id}}">Comment</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock  %}
+

@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+{% import 'bootstrap/wtf.html' as wtf%}
+
+
+{% block content %}
+<div class="container-fluid">
+    <div  style="background-color:lightgrey; padding-bottom: 130px; padding-top: 130px;" class="row">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2"> 
+                    
+                    </div>
+                    <div style="color:white; background-image: url(https://cdn.pixabay.com/photo/2016/06/26/22/32/background-1481478__340.jpg); background-size: cover; background-repeat: no-repeat;" class="col-md-8">
+                        <img style="text-align: center;" class="align-center img-responsive" src="https://media.giphy.com/media/ToMjGprRNuOYkmM1H8I/giphy.gif" height="100px">
+                    {{wtf.quick_form(registration_form)}}
+
+                    </div>
+                    <div class="col-md-2">
+                    
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+        {% endblock%}
+    

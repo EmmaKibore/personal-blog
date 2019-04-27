@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #!/home/emmah/Desktop/moringa-school-projects/Personal-Blog/virtual/bin/python
+=======
+#!/home/emmah/Desktop/moringa-school-projects/Pitch/virtual/bin/python3
+>>>>>>> 14aae2dcc0c6ce0324a855cec00bb71830ae2709
 # -*- coding: utf-8 -*-
 import re
 import sys
