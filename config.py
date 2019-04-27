@@ -1,7 +1,7 @@
 import os
 
 class Config:
-    SECRET_KEY='01570936bd6b231dd1e14cd'
+    SECRET_KEY='kikwaikhaoya'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587
@@ -17,7 +17,7 @@ class TestConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
 
 class DevConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://zamzam:Ilovememore100@localhost/personalblog'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://emmah:1234@localhost/personal-blog'
     DEBUG = True
 
 config_options = {

@@ -51,6 +51,10 @@ class Post(db.Model):
            db.session.delete()
            db.session.commit()
 
+    def upVote_post(self):
+        db.session.upVote()
+        db.session.commit()       
+
     def __repr__(self):
         return f'{self.title}'
 

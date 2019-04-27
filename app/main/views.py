@@ -141,6 +141,15 @@ def fashion(category = "Fashion"):
     
     return render_template('fashion.html', fashions= fashions, title=title, post ='New Post')
 
+@main.route('/delete/<int:id>',methods=['GET','POST'])
+@login_required
+def delete(id):
+   del_post = Post.query.filter_by(id=id).first()
+   db.session.delete(del_post)
+   db.session.commit()
+   
+   return redirect(url_for('main.index'))    
+
 
 
 
