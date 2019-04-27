@@ -17,8 +17,9 @@ def login():
             return redirect(request.args.get('next') or url_for('main.index'))
 
         flash('Invalid username or Password')
+
     form = LoginForm()
-    title = "pitch perfect login"
+    title = "personal-blog login"
     return render_template('auth/login.html',login_form = login_form,title=title)
 
 @auth.route('/register',methods = ["GET","POST"])

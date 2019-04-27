@@ -4,17 +4,17 @@ from wtforms import StringField, TextAreaField, SubmitField, SelectField
 class PostForm(FlaskForm):
 
     title = StringField('Blog title')
-    category= SelectField('Blog Category', choices=[('Select a category', 'Select a category'),('Music', 'Music'),('Adventures', 'Adventures'),('Animations', 'Animations'),('Fashion', 'Fashion'),('Nature', 'Nature'),('Celebrity', 'Celebrity'),('Frenemies', 'Frenemies'),('Feuds', 'Feuds'),('New cars', 'New cars')])
+    category= SelectField('Blog Category', choices=[('Select a category', 'Select a category'),('Music', 'Music'),('Adventures', 'Adventures'),('Fashion', 'Fashion'),('Nature', 'Nature'),('Celebrity', 'Celebrity')])
     content = TextAreaField('The Blog...')
     submit = SubmitField('Post')
 
 
 class CommentForm(FlaskForm):
 
-    comment = TextAreaField('Post Of The Comment')
+    comment = TextAreaField('Comment')
     submit = SubmitField('Submit')
 
 
 class UpdateProfile(FlaskForm):
-    bio = TextAreaField('Tell us more about you...')
+    bio = TextAreaField('Let us get to know you better...')
     submit = SubmitField('Submit')
