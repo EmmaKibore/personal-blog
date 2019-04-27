@@ -12,10 +12,8 @@ app = Flask(__name__)
 # views
 @main.route("/")
 def index():
-   '''
-   title = "Post Perfect"
-   '''
-   title = 'Post Perfect'
+   
+   title = 'Personal-Blog'
    posts = Post.query.all()
 
    return render_template('index.html', title= title, posts = posts)
@@ -67,7 +65,6 @@ def new_post():
         content=form.content.data
         category=form.category.data
         post = Post(title=title, content=content,category=category)
-        # post.save_post(post)
         db.session.add(post)
         db.session.commit()
 
@@ -88,7 +85,6 @@ def new_comment(id):
 
         comment = Comment(comment_content= comment_content, post_id=id)
 
-        # post.save_post(post)
         db.session.add(comment)
         db.session.commit()
         
@@ -104,15 +100,6 @@ def music(category = "Music"):
     title = "Music Blogs"
     return render_template('music.html', musics= musics, title=title, post ='New Post')
 
-
-@main.route('/animations/new', methods=['GET','POST'])
-@login_required
-def animations(category = "Animations"):
-
-    animations = Post.query.filter_by(category = "Animations")
-    
-    title = "Animations Blogs"
-    return render_template('animations.html', animations= animations, title=title, post ='New Post')
 
 
 @main.route('/adventure/new', methods=['GET','POST'])
@@ -154,26 +141,7 @@ def fashion(category = "Fashion"):
     
     return render_template('fashion.html', fashions= fashions, title=title, post ='New Post')
 
-@main.route('/frenemies/new', methods=['GET','POST'])
-@login_required
-def frenemies(category = "Fashion"):
-
-    frenemiess = Post.query.filter_by(category = "Frenemies")
-    
-    title = "Frenemies Blogs"
-        
-    return render_template('frenemies.html', frenemiess= frenemiess, title=title, post ='New Post')
 
 
-
-@main.route('/feuds/new', methods=['GET','POST'])
-@login_required
-def feuds(category = "Feuds"):
-
-    feudss = Post.query.filter_by(category = "Feuds")
-    
-    title = "Feuds Blogs"
-    
-    return render_template('feuds.html', feudss= feudss, title=title, post ='New Post')
 
 
