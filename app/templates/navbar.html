@@ -1,47 +1,25 @@
-
-
-<div style="background-image: url(); position: fixed;  top: 0; width: 100%; height: 100%; background-repeat: no-repeat;" class="container">
-    <nav style="overflow: hidden; background-image: url(https://quarryvillelibrary.lancasterlibraries.org/wp-content/uploads/sites/8/2019/01/gears-pixabay-user-TheDigitalArtist-1140x400.jpg); height: 25%; width: 5000;">
+<div style="overflow: hidden; background-image: url();  top: 0; width: 100%; height: 6000%; background-repeat: no-repeat; " class="container"> 
+    <nav style="overflow: hidden; background-color: black;">
+    
+         <ul style="margin-left:150px;">   
+            <li class="nav-item" style="color: plum;"><a href="/" class="nav-link"> <h3 style="color: plum;" >Home</h3> </a></li>
+            <li class="nav-item"  style="color: plum">
+                <a href="/blog/new" style="color: plum"><h3>Add Blog</h3></a>
             
-            <!-- <li class="nav-item" style= "margin: 30px;"><a href="/" class="nav-link">Home</a></li>
-            <li class="nav-item">
-                <a class="nav-link" style= "margin: 30px"; href="/blog/new">Add Blog</a>
-            </li>
+            </li>          
             
-                <div class="dropdown">
-                    <button class="nav-link"style="align: top;" >Blogs</button> -->
-                    <div class="topnav">
-                        <a class="active" style="color: red;"></a>Home</a>
-                        <a href="#news">Add Blog</a>
-                        <a href="#contact"></a>
-                        <div class="dropdown">
-                        <button class="nav-link"style="align: top;" >Blogs</button> -->
-                          
-                        
-                        <div class="dropdown-content">
-                        <a href="{{url_for('main.new_blog',category='fashion')}}">Fashion Blog</a>
-                        <a href="{{url_for('main.new_blog',category='celebrity')}}">Celebrity Blog</a>
-                      <a href="{{url_for('main.new_blog',category='nature')}}">Nature Blog</a>
-                        <a href="{{url_for('main.new_blog',category='adventure')}}">Adventure Blog</a>
-                     <a href="{{url_for('main.new_blog',category='music')}}">Music Blog</a>
-                    </div>
-                    </div>
-                  </div>
-
-                  
-
             {% if current_user.is_authenticated %}
-
-            <li class="nav-item">
+    
+            <li class="nav-item"  style="color: plum">
                 <a class="nav-link" href="{{url_for('main.profile',uname=current_user.username)}}"><span class="glyphicon glyphicon-user"></span>{{current_user.username}}</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" style= "margin: 30px;" href="{{url_for('auth.logout')}}">Log out</a>
+            <li class="nav-item"  style="color: plum">
+                <a class="nav-link" style= "" href="{{url_for('auth.logout')}}" style="color: plum"> <h3 style="color: plum" >Log out</h3></a>
             </li>
            
             {% else %}
-            <li class="nav-item">
-                <a class="nav-link" style= "margin: 30px;" href="{{url_for('auth.login')}}">Login</a>
+            <li class="nav-item"  style="color: plum">
+                <a class="nav-link" style= "" href="{{url_for('auth.login')}}" style="color: plum"><h3 style="color: plum" >Login</h3></a>
             </li>
             {% endif %}
     </ul>
@@ -49,7 +27,7 @@
    
 </nav>
 
-
+</div>
 
 
 

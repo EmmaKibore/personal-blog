@@ -9,6 +9,8 @@
 
 
 {% block content %}
+<div style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZIBSh6v7W27au_cQpi39dVO9gCrXXgXt3D9asmlzdFBkfLdhC);" class="Emma">
+
     <div class="container">
         <p style="font-size:73px; font-family: 'Dancing Script', cursive;">
             <strong>"Not only are bloggers suckers for the remarkable, so are the people who read blogs.”</strong>
@@ -18,8 +20,9 @@
     </div>
     <div class="container">
         <div class="row">
-                <p>Random Quotes</p>
-                <p>{{random.quote}}</p>
+        <p style="font-size:40px; font-family: 'Dancing Script', cursive">
+                <p style="font-size: 30px;font-family: 'Dancing Script', cursive">Random Quotes</p>
+                <p style="font-size: 30px;font-family: 'Dancing Script', cursive">{{random.quote}}</p>
                 <p>{{random.author}}</p>
             </div>
             {% for blog in blogs%}
@@ -35,7 +38,54 @@
                 </div>
             </div>
             {% endfor%}
+            
+
+    
+    <br>
+    </br>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="hovereffect">
+                <img class="img-responsive" src="https://media1.popsugar-assets.com/files/thumbor/j0Ls7dFgNKg2exrhGiMFalTRb5M/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2018/05/08/613/n/1922564/95bae9d26267d2c2_GettyImages-955782232/i/Nicki-Minaj-Met-Gala-Dress-2018.jpg" alt="">
+                <div class="overlay">
+                    <h2>Celebrity</h2>
+                    <a class="info" href="{{ url_for('main.celebrity') }}"> Blogs </a>
+                </div>
+            </div>
         </div>
+        <div class="col-md-4">
+            <div class="hovereffect">
+                <img class="img-responsive" src="https://i.pinimg.com/originals/36/2a/f1/362af16e81552380839629e46e57e3cf.jpg" alt="">
+                <div class="overlay">
+                    <h2>Nature</h2>
+                    <a class="info" href="{{ url_for('main.nature') }}">Blogs</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="hovereffect">
+                <img class="img-responsive" src="https://cdn.pixabay.com/photo/2016/04/10/21/34/woman-1320810_960_720.jpg" alt="Fashion">
+                <div class="overlay">
+                    <h2>Fashion</h2>
+                    <a class="info" href="{{ url_for('main.fashion') }}">Blogs</a>
+                </div>
+            </div>
+        </div>
+    
     </div>
+    <br>
+    </br>
+   
+    
+     
+    </div>
+    <div class="col-md-2">
+
+    </div>
+    </div>
+
+
+        
+
 {% endblock  %}
 

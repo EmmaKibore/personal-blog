@@ -76,7 +76,6 @@ def new_blog(id):
         content=form.content.data
         category=form.category.data
         blog = form.blog_post.data
-        # new_blog =new_ blog(title=title,category=category,blog=blog,blogger=current_user._get_current_object().id)
 
         db.session.add(post)
         db.session.commit()
@@ -109,8 +108,7 @@ def new_comment(id):
     comment = Comment.query.filter_by(blog_id=id).all()
     return render_template('new_comment.html', blog=blog, comments=comments, user=user)
 
-@main.route('/music/new', methods=['GET','POST'])
-# @login_required
+@main.route('/music', methods=['GET','POST'])
 def music(category = "Music"):
 
     musics = Blog.query.filter_by(category = "Music")
@@ -120,40 +118,30 @@ def music(category = "Music"):
 
 
 
-@main.route('/adventure/new', methods=['GET','POST'])
-# @login_required
-def adventure(category = "Adventures"):
-
-    adventures = Post.query.filter_by(category = "Adventures")
-    
-    title = "Adventures Blog"
-    return render_template('adventure.html', adventures= adventures, title=title, blog = 'blog')
 
 
-@main.route('/celebrity/new', methods=['GET','POST'])
-# @login_required
+
+@main.route('/celebrity', methods=['GET','POST'])
 def celebrity(category = "Celebrity"):
 
-    celebritys = Post.query.filter_by(category = "Celebrity")
+    celebritys = Blog.query.filter_by(category = "Celebrity")
     
     title = "Celebrity Blog"
     return render_template('celebrity.html', celebrity= celebrity, title=title, post ='New Post')
 
 
-@main.route('/nature/new', methods=['GET','POST'])
-# @login_required
+@main.route('/nature', methods=['GET','POST'])
 def nature(category = "Nature"):
 
-    natures = Post.query.filter_by(category = "Nature")
+    natures = Blog.query.filter_by(category = "Nature")
     
     title = "Nature Blog"
     return render_template('nature.html', natures= natures, title=title, post ='New Post')
 
-@main.route('/fashion/new', methods=['GET','POST'])
-# @login_required
+@main.route('/fashion', methods=['GET','POST'])
 def fashion(category = "Fashion"):
 
-    fashions = Post.query.filter_by(category = "Fashion")
+    fashions = Blog.query.filter_by(category = "Fashion")
     
     title = "Fashion Blog"
     
@@ -162,8 +150,8 @@ def fashion(category = "Fashion"):
 @main.route('/delete/<int:id>',methods=['GET','POST'])
 @login_required
 def delete(id):
-   del_post = Post.query.filter_by(id=id).first()
-   db.session.delete(del_post)
+   del_blog = Blog.query.filter_by(id=id).first()
+   db.session.delete(del_blog)
    db.session.commit()
    
    return redirect(url_for('main.index'))    
