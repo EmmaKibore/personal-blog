@@ -1,4 +1,4 @@
-export SECRET_KEY='Cookie'
+export SECRET_KEY='CHUCK'
 export MAIL_USERNAME='emmaKibore@gmail.com'
 export MAIL_PASSWORD='Cookie12'
 

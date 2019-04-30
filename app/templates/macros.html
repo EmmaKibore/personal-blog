@@ -1,18 +1,49 @@
-<!-- Displaying reviews macro -->
-{% macro displayReviews(review_list) %}
+<!-- {% macro displayComments(comments) %}
 
-    {% for review in review_list %}
+    {% for comment in comments %}
 
     <div class="row">
 
       <div class="col-xs-2 col-sm-2 col-md-4 col-lg-4">
-        <h4>Author</h4>
+        <h5>Author</h5>
         <p>{{review.user.username}}</p>
       </div>
       <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8">
-        <h2> <a href="{{url_for('main.single_pitch',id=pitch.id)}}">{{pitch.pitch_title}}</a> </h2>
+        <h2> <a href="{{url_for('main.single_blog',id=blog.id)}}">{{personal-blog.blog_title}}</a> </h2>
       </div>
     </div>
 
+    {% endfor %}
+{% endmacro %} -->
+
+{% macro displayComments(comments) %}
+    {% for comment in comments %}
+
+    <table style="width:100%">
+      <tr>
+        <th>Title</th>
+        <th>Comment</th>
+        <th>User</th>
+        <th>Delete</th>
+      </tr>
+      <tr>
+        <td>{{comment.title}}</td>
+        <td>{{comment.comment}}</td>
+        <td>{{comment.user_id}}</td>
+        <td><a href="{{url_for('main.del_comment',blog_id = comment.blog_id, comment_id = comment.id)}}"><button type="button" name="button" class="btn btn-warning">Delete Comment</button></a></td>
+      </tr>
+    </table>
+
+      <div class="col-xs-2 col-sm-2 col-md-3 col-lg-3">
+        <h4></h4>
+      </div>
+      <div class="col-xs-10 col-sm-10 col-md-6 col-lg-6">
+        <h4> <a></a> </h4>
+      </div>
+      <div class="col-xs-10 col-sm-10 col-md-3 col-lg-3">
+        <h4></h4>
+      </div>
+      <br><br>
+    </div>
     {% endfor %}
 {% endmacro %}

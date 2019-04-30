@@ -9,6 +9,17 @@ from . import login_manager
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+class Quote:
+    '''
+    Quote class to hold random quotes
+    '''
+
+    def __init__(self,id,author,quote):
+        self.id = id
+        self.author = author
+        self.quote = quote
+
+
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer,  primary_key = True)
@@ -18,7 +29,7 @@ class User(UserMixin, db.Model):
     profile_pic_path = db.Column(db.String())
     pass_secure = db.Column(db.String(255))
 
-    posts = db.relationship('Post',backref='user',lazy='dynamic')
+    blogs = db.relationship('Blog',backref='user',lazy='dynamic')
     comments = db.relationship('Comment', backref = 'comment', lazy= "dynamic")
 
     @property
@@ -36,8 +47,8 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return f'{self.username}'
 
-class Post(db.Model):
-    __tablename__ = 'post'
+class Blog(db.Model):
+    __tablename__ = 'blogs'
 
     id = db.Column(db.Integer,primary_key = True)
     title = db.Column(db.String(255))
@@ -45,15 +56,17 @@ class Post(db.Model):
     category = db.Column(db.String(255))
     
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
-    post_id = db.relationship('Comment', backref = 'comments', lazy= "dynamic")
+    comments = db.relationship('Comment', backref = 'comments', lazy= "dynamic")
        
-    def delete_post(self):
+    def delete_blog(self):
            db.session.delete()
            db.session.commit()
 
-    def upVote_post(self):
-        db.session.upVote()
-        db.session.commit()       
+    def get_comments(self):
+        blog = Blog.query.filter_by(id = self.id).first()
+        comments = Comment.query.filter_by(blog_id = blog.id).order_by(Comment.posted.desc())
+        return comments
+
 
     def __repr__(self):
         return f'{self.title}'
@@ -63,10 +76,28 @@ class Comment(db.Model):
 
     id = db.Column(db.Integer,primary_key=True)
     comment_content = db.Column(db.String())
-    post_id = db.Column(db.Integer,db.ForeignKey('post.id'))
+    blog_id = db.Column(db.Integer,db.ForeignKey('blogs.id'))
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+
+
+    @classmethod
+    def get_comments(cls, id):
+        comments = Comment.query.filter_by(blog_id = id).all()
+        return comments
+
+    def delete_comment(self):
+        db.session.delete(self)
+        db.session.commit()
+
 
 
     def __repr__(self):
         return f'{self.comment}'  
+
+class Subscriber(db.Model):
+    __tablename__ = 'subscribers'
+
+    id = db.Column(db.Integer, primary_key = True)
+    email = db.Column(db.String(255))
+    username = db.Column(db.String(255), index = True)        
 
